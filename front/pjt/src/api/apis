@@ -1,0 +1,25 @@
+const HOST = 'http://localhost:8080'
+const OPENVIDU_SERVER_URL = "https://i7b304.p.ssafy.io:8443";
+const OPENVIDU_SERVER_SECRET = "UCI";
+const OPENVIDUAPP_HEADER = btoa("OPENVIDUAPP:"+`${OPENVIDU_SERVER_SECRET}`);
+
+const ACCOUNTS = '/user'
+const ROOMS = '/room'
+
+export default {
+    accounts: {
+        login: () => HOST + '/login',        
+        // logout: () => HOST + ACCOUNTS + 'logout/',
+        signup: () => HOST + ACCOUNTS + '/join',
+        getUser: (email) => HOST + ACCOUNTS + `/me/${email}`
+    },
+    rooms: {
+        rooms: () => HOST + ROOMS,
+        create: () => HOST + ROOMS + '/create',
+        delete: (roomSeq) => HOST + ROOMS + `/${roomSeq}`,
+        seq: (roomTitle) => HOST + ROOMS + `/roomSeq/${roomTitle}`,
+        active: (roomSeq) => HOST + ROOMS + `/game/${roomSeq}`
+
+    },
+
+}
